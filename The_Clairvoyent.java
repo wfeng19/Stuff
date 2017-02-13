@@ -19,7 +19,7 @@ public class The_Clairvoyent {
 			{"Caitlin"};
 	//Introduction dialogue
 	static String[] dialogue = new String[]
-			{"I am the Clairvoyent. I have the ability to see the future based on various circumstances, such as the time of day,",
+			{"I am the Clairvoyent. I have the ability to see the future based on various characteristics, such as the time of day,",
 			"weather, and more. Thus, I will be asking you a series of 10 questions, some of which will require a yes or no answer.",
 			"These questions will help me get a better picture of the future, which I will then illustrate for you. However, my visions only",
 			"come in bits and pieces, so that will be the best I can give you. Please answer only using lowercase letters and be truthful.",
@@ -35,12 +35,66 @@ public class The_Clairvoyent {
 			"I want to kill myself"
 			};
 	static boolean[] feelings_b = new boolean[]
-			{false,
-			false,
-			false,
-			false,
-			false					
+			{false,false,false,false,false};
+	//Arrays for puns
+	static String[] puns_a = new String[]
+			{"I AM THE PUN GOD",
+			"I am a master at puns",
+			"I enjoy the occasional pun",
+			"Ew, puns are the lowest form of humor in existence",
+			"That's a kind of fruit, right?"};
+	static String[] puns_r = new String[]
+			{" "," "," "," "," ","Please type your answer again"};
+	static boolean[] puns_b = new boolean[]
+			{false, false, false, false, false};
+	//Arrays for stress
+	static String[] stress_a = new String[]
+		{"I talk it out with friends",
+		"I analyze it and separate it logically",
+		"I let out a war cry and smash stuff",
+		"I tackle it head on",
+		"I don't- I curl up in a ball and cry"
+		};
+	static String[] stress_r = new String[]
+			{" ", " ", " ", " ", " ", "What was your answer again?"};
+	static boolean[] stress_b = new boolean[]
+			{false, false, false, false, false};
+	//Arrays for relationship
+	static String[] relationship_a = new String[]
+			{"I have a harem of men and women",
+			"I am in a loving relationship",
+			"Single and ready to mingle!",
+			"I am single by choice",
+			"I am trying to work out some issues with my ex and SO"		
 			};
+	static String[] relationship_r = new String[]
+			{" ", " ", " ", " ", " ", "Could you say your answer again?"};
+	static boolean[] relationship_b = new boolean[]
+			{false, false, false, false, false};
+	//Arrays for powers
+	static String[] powers_a = new String[]
+			{"Earthquake generation",
+			"Pyrokinesis",
+			"Weather manipulation",
+			"Cryokinesis",
+			"Shape shifting"		
+			};
+	static String[] powers_r = new String[]
+			{" ", " ", " ", " ", " ", "Can you please enter an answer that is actually valid?"};
+	static boolean[] powers_b = new boolean[]
+			{false, false, false, false, false};
+	//Arrays for colors
+	static String[] colors_a = new String[]
+			{"Blue",
+			"Green",
+			"Red",
+			"Purple",
+			"Yellow"		
+			};
+	static String[] colors_r = new String[]
+			{" ", " ", " ", " ", " ", "What was that?"};
+	static boolean[] colors_b = new boolean[]
+			{false, false, false, false, false};
 	//Arrays for weather		
 	static String[] weather_a = new String[]
 			{"Sunny",
@@ -87,7 +141,7 @@ public class The_Clairvoyent {
 		String miscAnswers;
 		String answer;
 		//Introduction with name
-		System.out.println("Good afternoon. May I inquire as to what your name is?");
+		System.out.println("Good afternoon. What's your name?");
 		Scanner input = new Scanner(System.in);
 		String name = input.nextLine();
 		System.out.println("Hi " + name + ", it is pleasure to meet you!");
@@ -136,12 +190,14 @@ public class The_Clairvoyent {
 		System.out.println("Let's start with some deeply personal and creepy questions.");
         validInput = false;
         //Personal Question 1- Age
+        System.out.println("Question 1:");
         while (!validInput){
         	System.out.println("How old are you? [Enter an integer in years]");
         	try {
         		int age = input.nextInt();
         		input.nextLine();
         		System.out.println("Yeah, I am only about a week old, so you're definitely older than me.");
+        		System.out.println("");
         		validInput = true;
         	}catch (InputMismatchException e){
         		System.out.println("What the heck does that mean?");
@@ -150,6 +206,7 @@ public class The_Clairvoyent {
         }
         validInput = false;
         //Personal Question 2- Pets
+        System.out.println("Questions 2:");
         while (!validInput){
         	System.out.println("Do you have any pets? [Yes/No]");
         	answer = input.nextLine();
@@ -159,6 +216,7 @@ public class The_Clairvoyent {
             		int pets = input.nextInt();
             		input.nextLine();
             		System.out.println("Only? I have around 1729 cats, but I guess " + pets + " works, too.");
+            		System.out.println("");
             		validInput = true;
             	}catch (InputMismatchException e){
             		System.out.println("What? I'll ask again.");
@@ -170,6 +228,7 @@ public class The_Clairvoyent {
         		System.out.println("How can you not have any pets? Pets are great! [Explain your answer]");
         		miscAnswers = input.nextLine();
         		System.out.println("Oh, ok. Whatever, your loss.");
+        		System.out.println("");
         		validInput = true;
         	}
         	else {
@@ -179,10 +238,36 @@ public class The_Clairvoyent {
         yes = false;
         no = false;
         validInput = false;
-        //Personal Question 3- Make out
+        //Personal Question 3- Puns
+        System.out.println("Question 3:");
+        System.out.println("How do you feel about puns? [ I AM THE PUN GOD / I am a master at puns / I enjoy the occasional");
+       	System.out.println("pun / Ew, puns are the lowest form of humor in existence / That's a kind of fruit, right? ]");
+        while (!mc_questions(input.nextLine(), puns_a, puns_r, puns_b));
+        //Personal Question 4- Stress
+        System.out.println("Question 4:");
+        System.out.println("How do you deal with stress? [ I talk it out with friends / I analyze it and separate it logically /");
+        System.out.println("I let out a war cry and smash stuff / I tackle it head on / I don't- I curl up in a ball and cry ]");
+        while (!mc_questions(input.nextLine(), stress_a, stress_r, stress_b));
+        //Personal Question 5- Relationship
+        System.out.println("Question 5:");
+        System.out.println("What is your current relationship status? [ I have a harem of men and women / I am in a loving relationship /");
+        System.out.println("Single and ready to mingle! / I am single by choice / I am trying to work out some issues with my ex and SO ]");
+        while (!mc_questions(input.nextLine(), relationship_a, relationship_r, relationship_b));
+        //Personal Question 6- Powers
+        System.out.println("Question 6:");
+        System.out.println("Which of these superpowers would you prefer to have? [ Earthquake generation / Pyrokinesis / Weather manipulation /");
+        System.out.println("Cryokinesis / Shape shifting ]");
+        System.out.println("(Bonus points for those who know where I got these powers from. Hint: they're in order by number.)");
+        while (!mc_questions(input.nextLine(), powers_a, powers_r, powers_b));
+        //Personal Question 7- Colors
+        System.out.println("Question 7:");
+        System.out.println("Which of these colors are your favorite? [ Blue / Green / Red / Purple / Yellow ]");
+        while (!mc_questions(input.nextLine(), colors_a, colors_r, colors_b));
+        //Personal Question 7.5- Make out
+        System.out.println("Question 8:");
         System.out.println("Out of the people in your school, who do you want to make out with the most?");
         try {
-        	Thread.sleep(5000);
+        	Thread.sleep(3000);
         	System.out.println("");
         }
         catch (InterruptedException e) {
@@ -208,9 +293,8 @@ public class The_Clairvoyent {
         catch (InterruptedException e) {
         	e.printStackTrace();
         }
-        System.out.println("Can I be honest with you? You're kinda boring. You're boring me. I think I'm just going to move onto the actual");
-        System.out.println("questions now. Yeah, you heard me correctly. I was just messing around before. But since you're so boring");
-        System.out.println("I guess I have to actually do my thing now and read the future and blah blah blah. Ugh. Here we go.");
+        System.out.println("Can I be honest with you? You're kinda boring. You're boring me. Good thing there are only 3 questions left");
+        System.out.println("and none of them really have to do with you. Ugh. Here we go.");
         try {
         	Thread.sleep(3000);
             System.out.println("");
@@ -218,28 +302,121 @@ public class The_Clairvoyent {
         catch (InterruptedException e) {
         	e.printStackTrace();
         }
-        //Question 1 to 3 - Date
-        System.out.println("Question 1:");
+        //Question 8 - Date
+        System.out.println("Here's the real Question 8:");
         System.out.println("What is the current month? [Enter the name of the month]");
         String month = input.nextLine();
-        System.out.println("Question 2:");
         System.out.println("What is the current day? [Enter an integer for the day of the month]");
         int day = input.nextInt();
-        System.out.println("Question 3:");
         System.out.println("What is the current year? [Enter an integer for the year]");
         int year = input.nextInt();
         System.out.println("So the date is " + month + " " + day + ", " + year + "?");
         System.out.println ("Awesome!");
-        //Question 4- Weather
-        System.out.println("Question 4:");
+        //Question 9- Weather
+        System.out.println("Question 9:");
         System.out.println("What is the weather like today? [ Sunny / Partly Cloudy / Cloudy / Windy / Stormy ]");
         while (!mc_questions(input.nextLine(), weather_a, weather_r, weather_b));
-        //Question 5- Temperature
-        System.out.println("Question 5:");
+        //Question 10- Temperature
+        System.out.println("Question 10:");
         System.out.println("What is the temperature like today? [ Burning / Warm / Moderate / Chilly / Frigid]");
         while (!mc_questions(input.nextLine(), temperature_a, temperature_r, temperature_b));
-	
-        /*
+        
+        
+        System.out.println("Alright, that should be all the questions. See, that wasn't so bad now was it?");
+        System.out.println("Are you ready to see your future now?");
+        while (!validInput){
+        	if (yes = input.nextLine().equalsIgnoreCase(choices[0])){
+        		System.out.println("Well too bad. You can't. At least not right away. I need a little bit of time to process");
+        		System.out.println("the information. Gimme a minute, ok?");
+        		validInput = true;
+        	}
+        	else if (no = input.nextLine().equalsIgnoreCase(choices[1])){
+        		System.out.println("Well I wasn't ready anyway, so joke's on you. And I'm still gonna show you. Just gimme a");
+        		System.out.println("minute to process the information.");
+        		validInput = false;
+        	}
+        }
+        try {
+        	Thread.sleep(2000);
+        	System.out.println();
+        }
+        catch (InterruptedException e) {
+        	e.printStackTrace();
+        }
+        System.out.println("While I take this minute to process, you should also back up a little.");
+        System.out.println("My images are a little bit pixelated, so to see the image most clearly,");
+        System.out.println("you're going to need to move a couple feet away.");
+        System.out.println("");
+        try {
+        	Thread.sleep(3000);
+        	System.out.println();
+        	System.out.println("Processing...");
+        }
+        catch (InterruptedException e) {
+        	e.printStackTrace();
+        }
+        try {
+        	Thread.sleep(3000);
+        	System.out.println("Processing...");
+        }
+        catch (InterruptedException e) {
+        	e.printStackTrace();
+        }
+        try {
+        	Thread.sleep(3000);
+        	System.out.println("Processing...");
+        }
+        catch (InterruptedException e) {
+        	e.printStackTrace();
+        }
+        try {
+        	Thread.sleep(3000);
+        	System.out.println("Processing...");
+        }
+        catch (InterruptedException e) {
+        	e.printStackTrace();
+        }
+        try {
+        	Thread.sleep(3000);
+        	System.out.println("Processing...");
+        }
+        catch (InterruptedException e) {
+        	e.printStackTrace();
+        }
+        try {
+        	Thread.sleep(5000);
+        }
+        catch (InterruptedException e) {
+        	e.printStackTrace();
+        }
+        System.out.println("Ok, I'm ready! Thank you, and be prepared to see your future in:");
+        try {
+        	Thread.sleep(1000);
+        	System.out.println("3");
+        }
+        catch (InterruptedException e) {
+        	e.printStackTrace();
+        }
+        try {
+        	Thread.sleep(1000);
+        	System.out.println("2");
+        }
+        catch (InterruptedException e) {
+        	e.printStackTrace();
+        }
+        try {
+        	Thread.sleep(1000);
+        	System.out.println("1");
+        }
+        catch (InterruptedException e) {
+        	e.printStackTrace();
+        }
+        try {
+        	Thread.sleep(1000);
+        }
+        catch (InterruptedException e) {
+        	e.printStackTrace();
+        }
         System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
         System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrryrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
         System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgBBBBBgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
@@ -267,7 +444,6 @@ public class The_Clairvoyent {
         System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrcrrrrfrJTTrrrrrrfTTTTcJJrrrrrrrrrrrrrrrcrrrrrrrrrrrrrr");
         System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
         System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
-        */
         
 	}
 	
