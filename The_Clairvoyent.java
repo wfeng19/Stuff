@@ -444,12 +444,7 @@ public class The_Clairvoyent {
         System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrcrrrrfrJTTrrrrrrfTTTTcJJrrrrrrrrrrrrrrrcrrrrrrrrrrrrrr");
         System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
         System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
-        
 	}
-	
-	
-	
-	
 	
 	//Method to make sure user inputs "Yes", and will keep repeating otherwise
 	static boolean isCorrectAnswer(String userAnswer, String[] response, String[] info) {
